@@ -35,7 +35,7 @@ HTTP response or request.
 
 ABNF:
 
-    Clacks          = "Clacks" ":" 1#clacks-overhead
+    Clacks          = 1#clacks-overhead
     clacks-overhead = clacks-code [ RWS tower-address ] RWS value
     tower-address   = token
     clacks-code     = 1*codechar
@@ -68,5 +68,4 @@ FIXME: not submitted yet
 
 # Security Considerations
 
-TODO: something about being able to tolerate headers that are too long or have illegal characters.
-And don't generate headers that are too long or have illegal characters.
+This document represents an extension to [](#RFC7230) and all security considerations therein, or in documents updating or replacing that document, also apply to this one.
