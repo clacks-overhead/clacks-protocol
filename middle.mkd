@@ -23,8 +23,7 @@ the #rule extension as defined within Sections 3.2.1 and 3.2.4 of [](#RFC7230).
 
 # The Clacks Protocol
 
-Clacks is a semaphore signaling system invented by Robert Dearheart. It is
-the primary means of communication between city-states along The Grand Trunk.
+Clacks is a semaphore signaling system invented by Robert Dearheart. It is the primary means of communication between city-states along The Grand Trunk. Like most protocols Clacks has a Header (called the Overhead) and Payload. The Overhead contains information about (among other things) source, destination, message detail, logging, and mechanism control. This document doesn't define the Clacks protocol, only it's delivery over HTTP. The Clacks protocol definition is owned by The Grand Truck Semaphore Company, Ankh Morpork.
 
 TODO: Fill this out
 
@@ -69,3 +68,7 @@ FIXME: not submitted yet
 # Security Considerations
 
 This document represents an extension to [](#RFC7230) and all security considerations therein, or in documents updating or replacing that document, also apply to this one.
+
+# Proxy considerations
+Since all Clacks messages are effectivly point-to-point transmissions there is very limited scope for multiple User-Agents to require the same message. Due to this any message with the Clacks-overhead header MUST be considered equivalent to the no-cache header defined in [](#RFC7234) Section 5.2.1.4 this allows for the cache to store the object as long as it is revalidated prior to sending.
+
