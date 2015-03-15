@@ -75,3 +75,5 @@ Since all Clacks messages are effectivly point-to-point transmissions there is v
 # User-Agent considerations
 A user-agent should follow the Grand Trunk Clacks standards. For example any User-Agent recieving a Clacks-overhead message with a U code should respond to the server with the same Clacks-Overhead header on it's next request.
 
+ToDo: Needs more detail or deleting. It feels a little redundant as it's just referring out...
+
