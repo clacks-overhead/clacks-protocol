@@ -1,0 +1,1 @@
+This document specifies a method for encapsulating and transmitting Clacks overhead messages over HTTP.

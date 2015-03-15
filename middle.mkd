@@ -1,0 +1,72 @@
+# Introduction
+
+<?rfc toc="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc subcompact="no"?>
+<?rfc compact="yes"?>
+<?rfc comments="yes"?>
+
+While IP-SFS [](#RFC4824) makes it possible to transmit Internet protocols
+over semaphore signaling systems such as Clacks, the reverse is not always
+the case. Information sent in the overhead may be lost when Clacks messages
+are sent using HTTP.
+
+This document specifies HTTP headers for transmitting overhead messages
+that originate or are intended for Clacks towers.
+
+## Syntax Notation
+
+This specification uses the Augmented Backus-Naur Form (ABNF) notation of [](#RFC5234)
+and includes, by reference, the "token", "word", "OWS", and "BWS" rules and
+the #rule extension as defined within Sections 3.2.1 and 3.2.4 of [](#RFC7230).
+
+# The Clacks Protocol
+
+Clacks is a semaphore signaling system invented by Robert Dearheart. It is
+the primary means of communication between city-states along The Grand Trunk.
+
+TODO: Fill this out
+
+# Clacks over HTTP
+
+The Clacks-overhead header field is used to transmit overhead messages in an
+HTTP response or request.
+
+ABNF:
+
+  Clacks          = "Clacks" ":" 1#clacks-overhead
+  clacks-overhead = clacks-code [ RWS tower-address ] RWS value
+  tower-address   = token
+  clacks-code     = 1*codechar
+  codechar        = ALPHA
+  value           = value-string / quoted-string / ext-value
+  ext-value       = "=" charset "'" [ language ] "'" value-chars
+                  ; like [](#RFC5987)
+
+## Examples
+
+  Clacks: GNU John Dearheart
+
+# IANA Considerations
+
+The 'Clacks' and 'Accept-Clacks' header fields have been added to the
+"Permanent Message Header Field Names" registry defined in [](#RFC3864).
+FIXME: not submitted yet
+
+  Header field name: Clacks
+
+  Applicable Protocol: HTTP
+
+  Status: Standard
+
+  Author: Terry Pratchett (posthumously)
+
+  Change controller: IETF
+
+  Specification document: this specification
+
+# Security Considerations
+
+TODO: something about being able to tolerate headers that are too long or have illegal characters.
+And don't generate headers that are too long or have illegal characters.
