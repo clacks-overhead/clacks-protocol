@@ -70,5 +70,5 @@ FIXME: not submitted yet
 This document represents an extension to [](#RFC7230) and all security considerations therein, or in documents updating or replacing that document, also apply to this one.
 
 # Proxy considerations
-Since all Clacks messages are effectivly point-to-point transmissions there is very limited scope for multiple User-Agents to require the same message. Due to this any message with the Clacks-overhead header MUST be considered equivalent to the no-cache header defined in [](#RFC7234) Section 5.2.1.4 this allows for the cache to store the object as long as it is revalidated prior to sending.
+Since all Clacks messages are effectivly point-to-point transmissions there is very limited scope for multiple User-Agents to require the same message. Due to this any message with the Clacks-overhead header MUST be considered equivalent to the no-cache header defined in [RFC7234](#RFC7234) Section 5.2.1.4 this allows for the cache to store the object as long as it is revalidated prior to sending.
 
