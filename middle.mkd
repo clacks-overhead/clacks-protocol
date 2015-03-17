@@ -21,6 +21,10 @@ This specification uses the Augmented Backus-Naur Form (ABNF) notation of [](#RF
 and includes, by reference, the "token", "word", "OWS", and "BWS" rules and
 the #rule extension as defined within Sections 3.2.1 and 3.2.4 of [](#RFC7230).
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [](#RFC2119).
+
 # The Clacks Protocol
 
 Clacks is a semaphore signaling system invented by Robert Dearheart. It is
@@ -28,12 +32,16 @@ the primary means of communication between city-states along The Grand Trunk.
 
 TODO: Fill this out
 
-# Clacks over HTTP
+# Clacks over HTTP Protocol Additions
 
-The Clacks-overhead header field is used to transmit overhead messages in an
-HTTP response or request.
+The Clacks over HTTP extension specifies one header field which MAY be included
+in a HTTP request or response.
 
-ABNF:
+## The Clacks response field
+
+The Clacks header field is used to transmit overhead messages in a HTTP
+response, and MAY be accepted by a server confirming to this specification.
+It is specified as follows:
 
     Clacks          = 1#clacks-overhead
     clacks-overhead = clacks-code [ RWS tower-address ] RWS value
@@ -44,14 +52,26 @@ ABNF:
     ext-value       = "=" charset "'" [ language ] "'" value-chars
                     ; like [](#RFC5987)
 
-## Examples
+Any value may be assigned to a `codechar`, but the following characters have
+gained acceptance throughout the Clacks network:
 
+* `U` indicates that the Clacks overhead received by a server SHOULD be
+returned in its response.
+* `G` indicates that a message received by the server SHOULD "go on", and be
+retransmitted by the HTTP server in any future responses regardless of the
+presence or lack of a Clacks header field in the request.
+* `N` indicates that the overhead content of the Clacks message SHOULD NOT be
+logged by the receiver.
+
+### Examples
+
+    HTTP/1.1 200 OK
     Clacks: GNU John Dearheart
 
 # IANA Considerations
 
-The 'Clacks' and 'Accept-Clacks' header fields have been added to the
-"Permanent Message Header Field Names" registry defined in [](#RFC3864).
+The 'Clacks' header field has been added to the "Permanent Message Header
+Field Names" registry defined in [](#RFC3864).
 FIXME: not submitted yet
 
     Header field name: Clacks
@@ -65,6 +85,15 @@ FIXME: not submitted yet
     Change controller: IETF
     
     Specification document: this specification
+
+# Environmental Considerations
+
+As noted in Section TODO, a Clacks message sent via the traditional semaphore
+network represents a significant expenditure of energy, not only in the
+operation of the signalling panels, but in manual verification and message
+passing. It is self-evident that this specification provides for a high
+level of efficiency, utilizing existing infrastructure to provide the seamless
+interaction that users of the Clacks network have come to expect.
 
 # Security Considerations
 
