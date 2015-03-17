@@ -5,6 +5,10 @@
 <!ENTITY pandocBack     PUBLIC '' 'back.xml'>
 
 <!ENTITY RFC2119 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
+<!ENTITY RFC3864 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.3864.xml'>
+<!ENTITY RFC4824 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4824.xml'>
+<!ENTITY RFC5234 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5234.xml'>
+<!ENTITY RFC7230 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7230.xml'>
 ]>
 
 <rfc ipr="trust200902" category="info" docName="draft-whoopdedo-clacks-overhead">
@@ -19,13 +23,20 @@
                 <uri>ptbrown@whoopdedo.org</uri>
             </address>
         </author>
-        
         <author initials="M." surname="Green"
                 fullname="Matt Green">
             <organization/>
 
             <address>
                 <uri>matt.green@bt.com</uri>
+            </address>
+        </author>
+        <author initials="I." surname="Nazar"
+                fullname="Imran Nazar">
+            <organization/>
+
+            <address>
+                <uri>tf@imrannazar.com</uri>
             </address>
         </author>
 
@@ -45,6 +56,10 @@
 <back>
     <references title="Normative References">
         &RFC2119;
+        &RFC3864;
+        &RFC4824;
+        &RFC5234;
+        &RFC7230;
     </references>
     &pandocBack;
 </back>
