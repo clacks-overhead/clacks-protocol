@@ -114,7 +114,7 @@ This document represents an extension to [](#RFC7230) and all security considera
 # Proxy considerations
 Since all Clacks messages are effectively point-to-point transmissions there is very limited scope for multiple User-Agents to require the same message. Due to this any message with the Clacks header MUST be considered equivalent to the no-cache header defined in [](#RFC7234) Section 5.2.1.4 this allows for the cache to store the object as long as it is revalidated prior to sending.
 
-#User-Agent considerations
+# User-Agent considerations
 A user-agent should follow the Grand Trunk Clacks standards [GTSC-CLACKS](Grand Trunk Semaphore Company, "Clacks Operator's Book") for Overhead definition. 
 
 Since the Clacks to HTTP gateway is expected to be a human (or Dwarf, Troll, etc.) operated process User-Agents need to cope with long session availability to provide the necessary time window to allow the message to be input.
