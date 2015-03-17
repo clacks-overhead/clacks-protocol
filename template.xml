@@ -5,6 +5,16 @@
 <!ENTITY pandocBack     PUBLIC '' 'back.xml'>
 
 <!ENTITY RFC2119 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
+<!ENTITY RFC3864 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.3864.xml'>
+<!ENTITY RFC4824 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4824.xml'>
+<!ENTITY RFC5234 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5234.xml'>
+<!ENTITY RFC5987 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5987.xml'>
+<!ENTITY RFC7230 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7230.xml'>
+<!ENTITY RFC7234 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7234.xml'>
+
+<!ENTITY GTSCClacks PUBLIC '' 'bib/reference.GTSC.Clacks.xml'>
+<!ENTITY SCSII      PUBLIC '' 'bib/reference.SCSII.xml'>
+<!ENTITY HOPE       PUBLIC '' 'bib/reference.Vetinari.xml'>
 ]>
 
 <rfc ipr="trust200902" category="info" docName="draft-whoopdedo-clacks-overhead">
@@ -45,6 +55,17 @@
 <back>
     <references title="Normative References">
         &RFC2119;
+        &RFC3864;
+        &RFC4824;
+        &RFC5234;
+        &RFC5987;
+        &RFC7230;
+        &RFC7234;
+    </references>
+    <references title="Informative References">
+        &GTSCClacks;
+        &SCSII;
+        &HOPE;
     </references>
     &pandocBack;
 </back>

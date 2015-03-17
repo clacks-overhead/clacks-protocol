@@ -35,7 +35,7 @@ The Clacks header field is used to transmit Overhead messages in an
 HTTP response or request. The Accept-Clacks header field is sent in
 an HTTP request to indicate to a server that a client is able to
 process Overhead messages. In the absence of an Accept-Clacks header
-a server MAY respond with a Clacks message in the hope [HOPE](Vetinari, H., "The Greatest Gift")
+a server MAY respond with a Clacks message in the hope [](#HOPE)
 that the client can do something with it and merely forgot to send the
 Accept-Clacks header.
 
@@ -50,7 +50,7 @@ An Overhead message consists of a Clacks Code, an optional Tower Address, and a 
     codechar        = ALPHA
     value           = value-string / quoted-string / ext-value
     ext-value       = "=" charset "'" [ language ] "'" value-chars
-                    ; like [](#RFC5987)
+                    ; like [RFC5987]
 
 ## The Accept-Clacks header field
 
@@ -63,7 +63,7 @@ header.
     Accept-Clacks  = clacks-code RWS clacks-encodings
     clacks-encodings = "*" / ( token *( "/" token ) )
 
-A Clacks-capable client MUST support "Plain" encoding. Other commonly used encodings are "RKN" Reverse-Klatchian Notation, and "Ook" also known as Simian Computer System for Information Interchange [SCSII](Stibbons, P., "Simian Computer Source Book"", Unseen University Press) that is only used by the Clacks tower at Unseen University. 
+A Clacks-capable client MUST support "Plain" encoding. Other commonly used encodings are "RKN" Reverse-Klatchian Notation, and "Ook" also known as Simian Computer System for Information Interchange [](#SCSII) that is only used by the Clacks tower at Unseen University. 
 
 ## Examples
 
@@ -95,7 +95,7 @@ This document represents an extension to [](#RFC7230) and all security considera
 Since all Clacks messages are effectively point-to-point transmissions there is very limited scope for multiple User-Agents to require the same message. Due to this any message with the Clacks header MUST be considered equivalent to the no-cache header defined in [](#RFC7234) Section 5.2.1.4 this allows for the cache to store the object as long as it is revalidated prior to sending.
 
 #User-Agent considerations
-A user-agent should follow the Grand Trunk Clacks standards [GTSC-CLACKS](Grand Trunk Semaphore Company, "Clacks Operator's Book") for Overhead definition. 
+A user-agent should follow the Grand Trunk Clacks standards [](#GTSC-CLACKS) for Overhead definition. 
 
 Since the Clacks to HTTP gateway is expected to be a human (or Dwarf, Troll, etc.) operated process User-Agents need to cope with long session availability to provide the necessary time window to allow the message to be input.
 
