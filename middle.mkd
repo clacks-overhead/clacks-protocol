@@ -65,7 +65,7 @@ throughout the Clacks network are defined in [](#POSTAL).
 ## The Accept-Clacks header field
 
 A Clacks-capable client SHOULD include in HTTP requests an Accept-Clacks
-header indicating the Clacks codes and encodings it recognizes. If a
+header indicating the Clacks codes and encodings it recognises. If a
 valid Accept-Clacks header is received by a server then it MUST NOT
 send Overhead message codes that are not indicated by the Accept-Clacks
 header.
@@ -73,7 +73,7 @@ header.
     Accept-Clacks  = clacks-code RWS clacks-encodings
     clacks-encodings = "*" / ( token *( "/" token ) )
 
-A Clacks-capable client MUST support "Plain" encoding. Other commonly used encodings are "RKN" Reverse-Klatchian Notation, and "Ook!" also known as Simian Computer System for Information Interchange [SCSII](Stibbons, P., "Simian Computer Sourcebook"", Unseen University Press) that is only used by the Clacks tower at Unseen University. 
+A Clacks-capable client MUST support "Plain" encoding. Other commonly used encodings are "RKN" Reverse-Klatchian Notation, and "Ook" also known as Simian Computer System for Information Interchange [SCSII](Stibbons, P., "Simian Computer Source Book"", Unseen University Press) that is only used by the Clacks tower at Unseen University. 
 
 ## Examples
 
