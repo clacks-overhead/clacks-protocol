@@ -60,7 +60,7 @@ An Overhead message consists of a Clacks Code, an optional Tower Address, and a 
                     ; like [](#RFC5987)
 
 The 'codechar' above may refer to any uppercase letter; codes in common use
-throughout the Clacks network are defined in [](#POSTAL).
+throughout the Clacks network are defined in the [GTSC-CLACKS](Grand Trunk Semaphore Company, "Clacks Operator's Book").
 
 ## The Accept-Clacks header field
 
