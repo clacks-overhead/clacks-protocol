@@ -52,16 +52,8 @@ It is specified as follows:
     ext-value       = "=" charset "'" [ language ] "'" value-chars
                     ; like [](#RFC5987)
 
-Any value may be assigned to a `codechar`, but the following characters have
-gained acceptance throughout the Clacks network:
-
-* `U` indicates that the Clacks overhead received by a server SHOULD be
-returned in its response.
-* `G` indicates that a message received by the server SHOULD "go on", and be
-retransmitted by the HTTP server in any future responses regardless of the
-presence or lack of a Clacks header field in the request.
-* `N` indicates that the overhead content of the Clacks message SHOULD NOT be
-logged by the receiver.
+The 'codechar' above may refer to any uppercase letter; codes in common use
+throughout the Clacks network are defined in [](#POSTAL).
 
 ### Examples
 

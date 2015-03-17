@@ -48,6 +48,10 @@
 <back>
     <references title="Normative References">
         &RFC2119;
+        &RFC3864;
+        &RFC4824;
+        &RFC5234;
+        &RFC7230;
     </references>
     &pandocBack;
 </back>
