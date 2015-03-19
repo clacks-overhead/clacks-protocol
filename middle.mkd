@@ -21,6 +21,10 @@ This specification uses the Augmented Backus-Naur Form (ABNF) notation of [](#RF
 and includes, by reference, the "token", "word", "OWS", and "BWS" rules and
 the #rule extension as defined within Sections 3.2.1 and 3.2.4 of [](#RFC7230).
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [](#RFC2119).
+
 # The Clacks Protocol
 
 Clacks is a semaphore signalling system invented by Robert Dearheart. It is the primary means of communication between city-states along The Grand Trunk. Like most protocols Clacks has a Header (called the Overhead) and Payload. The Overhead contains information about (among other things) source, destination, message detail, logging, and mechanism control. This document doesn't define the Clacks protocol, only it's delivery over HTTP. The Clacks protocol definition is owned by The Grand Trunk Semaphore Company, Ankh Morpork.
@@ -29,7 +33,13 @@ All Overhead messages begin with a Clacks Code. A Code is a sequence of upper-ca
 
 The Overhead body may be encoded to shorten the message or conceal it from eavesdropping. A message that is not encoded is sent "in the Plain" or just "Plain" In many cases the Code alone is sufficient instruction to the Clacks operator and further interpretation of the message body is not required. For this reason Clacks operators, and thus HTTP clients and servers, MUST be able to accept messages with an unknown encoding.
 
-# Clacks over HTTP
+# Clacks over HTTP Protocol Additions
+
+The Clacks over HTTP extension specifies one header field which MAY be included
+in a HTTP response or request, and one header field which MAY by included in
+a HTTP request.
+
+## The Clacks response field
 
 The Clacks header field is used to transmit Overhead messages in an 
 HTTP response or request. The Accept-Clacks header field is sent in
@@ -38,8 +48,6 @@ process Overhead messages. In the absence of an Accept-Clacks header
 a server MAY respond with a Clacks message in the hope [](#HOPE)
 that the client can do something with it and merely forgot to send the
 Accept-Clacks header.
-
-## The Clacks header field
 
 An Overhead message consists of a Clacks Code, an optional Tower Address, and a possibly encoded message body.
 
@@ -51,6 +59,9 @@ An Overhead message consists of a Clacks Code, an optional Tower Address, and a 
     value           = value-string / quoted-string / ext-value
     ext-value       = "=" charset "'" [ language ] "'" value-chars
                     ; like [RFC5987]
+
+The 'codechar' above may refer to any uppercase letter; codes in common use
+throughout the Clacks network are defined in the [GTSC-CLACKS](Grand Trunk Semaphore Company, "Clacks Operator's Book").
 
 ## The Accept-Clacks header field
 
@@ -67,12 +78,13 @@ A Clacks-capable client MUST support "Plain" encoding. Other commonly used encod
 
 ## Examples
 
+    HTTP/1.1 200 OK
     Clacks: GNU John Dearheart
 
 # IANA Considerations
 
-The 'Clacks' and 'Accept-Clacks' header fields have been added to the
-"Permanent Message Header Field Names" registry defined in [](#RFC3864).
+The 'Clacks' header field has been added to the "Permanent Message Header
+Field Names" registry defined in [](#RFC3864).
 FIXME: not submitted yet
 
     Header field name: Clacks
@@ -87,6 +99,15 @@ FIXME: not submitted yet
     
     Specification document: this specification
 
+# Environmental Considerations
+
+As noted in Section TODO, a Clacks message sent via the traditional semaphore
+network represents a significant expenditure of energy, not only in the
+operation of the signalling panels, but in manual verification and message
+passing. It is self-evident that this specification provides for a high
+level of efficiency, utilizing existing infrastructure to provide the seamless
+interaction that users of the Clacks network have come to expect.
+
 # Security Considerations
 
 This document represents an extension to [](#RFC7230) and all security considerations therein, or in documents updating or replacing that document, also apply to this one.
@@ -94,7 +115,7 @@ This document represents an extension to [](#RFC7230) and all security considera
 # Proxy considerations
 Since all Clacks messages are effectively point-to-point transmissions there is very limited scope for multiple User-Agents to require the same message. Due to this any message with the Clacks header MUST be considered equivalent to the no-cache header defined in [](#RFC7234) Section 5.2.1.4 this allows for the cache to store the object as long as it is revalidated prior to sending.
 
-#User-Agent considerations
+# User-Agent considerations
 A user-agent should follow the Grand Trunk Clacks standards [](#GTSC-CLACKS) for Overhead definition. 
 
 Since the Clacks to HTTP gateway is expected to be a human (or Dwarf, Troll, etc.) operated process User-Agents need to cope with long session availability to provide the necessary time window to allow the message to be input.
