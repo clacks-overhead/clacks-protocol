@@ -54,16 +54,32 @@ Trunk Semaphore Company, Ankh Morpork.
 The Overhead body may be encoded to shorten the message or conceal it from
 eavesdropping. A message that is not encoded is sent "in the Plain" or just
 "Plain" In many cases the Code alone is sufficient instruction to the Clacks
-operator and further interpretation of the message body is not required. For
-this reason Clacks operators, and thus HTTP clients and servers, MUST be able
-to accept messages with an unknown encoding.
+Demon and further interpretation of the message body is not required. For this
+reason Clacks Towers, MUST be able to accept messages with an unknown encoding.
 
 # Clacks-over-HTTP Gateways
 
 The Clacks networks of Discworld interface with the Internet of Roundworld at
-gateway Towers.
+gateway Towers. Clacks messages that arrive at the Tower are read by a Demon
+(alternately a Dwarf, Troll, or the occasional quick-fingered Human) then
+forwarded to an Internet connected computer with appropriate HTTP headers
+applied. The Demon will activate the Clacks shutters when data is received
+from the Internet.
 
-TODO: draw a diagram, packet flow through gateways, gateways must flush overhead before the operator forgets what the message is (require HEAD requests for overhead sans message body?)
+A Gateway MUST send one HTTP request for each regular Clacks message. Because
+Overhead messages are transmitted more frequently on a Clacks network, sending
+a request for each message is inefficient. A Gateway MUST buffer incoming
+Overhead messages. One or more buffered messages are forwarded when one of the
+following events occurs:
+
+* A regular Clacks message is forwarded.
+* The Demon has exhausted available memory for saving messages.
+* The Demon is about to go down the ladder.
+
+If Overhead messages are being sent without a Clacks message as the body of
+the HTTP request then the Gateway MUST send a "HEAD" request. The Gateway
+SHOULD send as many Overhead messages as possible when sending a request.
+
 
 ## Protocol Additions
 
@@ -81,9 +97,9 @@ a server MAY respond with a Clacks message in the hope [](#HOPE)
 that the client can do something with it and merely forgot to send the
 Accept-Clacks header.
 
-TODO: maximum length?
-
-An Overhead message consists of a Clacks Code, an optional Tower Address, and a possibly encoded message body.
+An Overhead message consists of a Clacks Code, an optional Tower Address, and
+a possibly encoded message body. Servers SHOULD limit the length and number
+of Clacks so as not to overwhelm the receiving Gateway Demon.
 
     Clacks          = 1#clacks-overhead
     clacks-overhead = clacks-code [ RWS tower-address ] RWS value
@@ -95,7 +111,7 @@ An Overhead message consists of a Clacks Code, an optional Tower Address, and a 
                     ; like [RFC5987]
 
 The 'codechar' above may refer to any uppercase letter; codes in common use
-throughout the Clacks network are defined in the [GTSC-CLACKS](Grand Trunk Semaphore Company, "Clacks Operator's Book").
+throughout the Clacks network are defined in the [](#GTSC-CLACKS).
 
 ### The Accept-Clacks header field
 
@@ -105,7 +121,12 @@ valid Accept-Clacks header is received by a server then it MUST NOT
 send Overhead message codes that are not indicated by the Accept-Clacks
 header.
 
-    Accept-Clacks  = clacks-code RWS clacks-encodings
+A client can refuse all Clacks responses with the Accept-Clacks header
+value of "no". A server MUST NOT send a Clacks header if the request
+refuses.
+
+    Accept-Clacks  = "no" / accept-clacks-encoding
+    accept-clacks-encoding = clacks-code RWS clacks-encodings
     clacks-encodings = "*" / ( token *( "/" token ) )
 
 A Clacks-capable client MUST support "Plain" encoding. Other commonly used encodings are "RKN" Reverse-Klatchian Notation, and "Ook" also known as Simian Computer System for Information Interchange [](#SCSII) that is only used by the Clacks tower at Unseen University. 
@@ -135,7 +156,7 @@ FIXME: not submitted yet
 
 # Environmental Considerations
 
-As noted in Section TODO, a Clacks message sent via the traditional semaphore
+As noted in [](#the-clacks-protocol), a Clacks message sent via the traditional semaphore
 network represents a significant expenditure of energy, not only in the
 operation of the signalling panels, but in manual verification and message
 passing. It is self-evident that this specification provides for a high

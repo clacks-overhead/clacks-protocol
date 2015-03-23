@@ -17,7 +17,7 @@
 <!ENTITY HOPE       PUBLIC '' 'bib/reference.Vetinari.xml'>
 ]>
 
-<rfc ipr="trust200902" category="info" docName="draft-whoopdedo-clacks-overhead">
+<rfc ipr="trust200902" category="info" docName="draft-clacks-overhead-gateway">
  <front>
         <title>Clacks over HTTP Protocol</title>
 
