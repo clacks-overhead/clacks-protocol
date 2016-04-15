@@ -46,6 +46,15 @@
             </address>
         </author>
 
+        <author initials="G." surname="Fenton"
+                fullname="Gregory Fenton">
+            <organization/>
+
+            <address>
+                <uri>clacks-overhead@labby.co.uk</uri>
+            </address>
+        </author>
+
         <date month="April" year="2015"/>
 
         <area>General</area>
